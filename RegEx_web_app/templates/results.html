@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation Result</title>
+    <style>
+       body {
+            background-color: rgb(214, 245, 235);
+            height: 80vh;
+            margin: 0;
+            width: 100vw;
+            padding: 0;
+            color: #a9b7c6;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .container {
+            color: black;
+            background-color: rgb(248, 241, 233);
+            border-radius: 1rem;
+            width: 40%;
+            padding-top: 0;
+            overflow: hidden;
+            float: left;
+        }
+
+        nav {
+            background-color: rgb(178, 46, 190);
+            padding: 8px 0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 6px;
+        }
+
+        
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+            background-color: rgb(178, 46, 190);
+            color: yellow;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black;
+        }
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+input[type="submit"] {
+    background-color: rgb(178, 46, 190);
+            color: white;
+            padding: 14px 27px;
+            border: none;
+            cursor: pointer;
+            float: left;
+            border-radius: 50%;
+            font-weight: bolder;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(190, 201, 38);
+}
+
+.back_button {
+            background-color: rgb(178, 46, 190);
+            color: white;
+            padding: 14px 27px;
+            border: 0;
+            cursor: pointer;
+            float: right;
+            border-radius: 50%;
+            font-weight: bolder;
+        }
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+li.valid {
+    background-color: #90EE90;
+    margin-top: 60px;
+    color: #008000;
+}
+
+li.invalid {
+    background-color: #FFB6C1;
+    margin-top: 60px;
+    color: #FF0000;
+}
+
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <nav>
+            <ul class="navbar">
+                <li><a href="/">Regex Matcher</a></li>
+                <li><a href="/email">Email Validation</a></li>
+            </ul>
+        </nav>
+        <h1>Email Validation</h1>
+        <form action="/validate_email" method="post">
+            <label>Enter your email id:</label>
+            <input type="text" name="mail" value="{{ text }}" autocomplete="on" required>
+            <br>
+            <input type="submit" value="Check">
+            <button type="button" class="back_button"> Go Back</button>
+        </form>
+        <ul>
+            {% if valid_mail == True %}
+                <li class="valid">Valid email</li>
+            {% elif valid_mail == False %}
+                <li class="invalid">Not a valid email</li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>

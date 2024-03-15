@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Matcher</title>
+    <style>
+        body {
+            background-color: rgb(214, 245, 235);
+            height: 80vh;
+            margin: 0;
+            width: 100vw;
+            padding: 0;
+            color: #a9b7c6;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .container {
+            color: black;
+            background-color: rgb(248, 241, 233);
+            border-radius: 1rem;
+            width: 40%;
+            padding-top: 0;
+            overflow: hidden;
+            float: left;
+        }
+
+
+
+        nav {
+            background-color: rgb(178, 46, 190);
+            padding: 15px 0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 8px;
+        }
+
+        
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+            background-color: rgb(178, 46, 190);
+            color: yellow;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: black;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: black;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            background-color: white;
+            color: black;
+            font-weight: bolder;
+            border: none;
+        }
+
+        button {
+            background-color: rgb(178, 46, 190);
+            color: white;
+            padding: 14px 27px;
+            border: none;
+            cursor: pointer;
+            float: left;
+            border-radius: 50%;
+            font-weight: bolder;
+            transition: background-color 0.3s ease;
+        }
+
+        .back_button {
+            background-color: rgb(178, 46, 190);
+            color: white;
+            padding: 14px 27px;
+            border: 0;
+            cursor: pointer;
+            float: right;
+            border-radius: 50%;
+            font-weight: bolder;
+        }
+
+        button:hover {
+            background-color: rgb(190, 201, 38);
+        }
+
+        h3 {
+            color: #6a8759;
+            align-items: center;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        p {
+            color: black;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <nav class="navbar_container">
+            <ul>
+                <li class="nav_elem"><a href="/">Regex Matcher</a></li>
+                <li class="nav_elem"><a href="/email">Email Validation</a></li>
+            </ul>
+        </nav>
+        <h1> Regex Matcher </h1>
+        <form action="/regex_result" method="post">
+            <br>
+            <label for="text">Test string:</label>
+            <textarea id="text" name="text" rows="4" cols="50" autocomplete="off" required>{{ text }}</textarea>
+            <br>
+            <label for="pattern">Regular Expression:</label>
+            <input type="text" id="pattern" name="pattern" value="{{ pattern }}" autocomplete="off" required>
+
+            <br>
+            <button type="submit">Search</button>
+            <button type="button" class="back_button"> Go Back</button>
+        </form>
+        <h3>Matches:</h3>
+        <p>
+            {% for match in matches %}
+            {{ match }}
+            {% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+</body>
+
+</html>
